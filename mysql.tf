@@ -19,7 +19,7 @@ module "mysql_db" {
   password = random_string.mysql_admin_password.result
   port     = var.mysql_port
 
-  option_group_name       = "default:mysql-5-7"
+  option_group_name       = var.option_group_name
   maintenance_window      = "Mon:00:00-Mon:03:00"
   backup_window           = "03:00-06:00"
   backup_retention_period = var.backup_retention_period
@@ -29,7 +29,7 @@ module "mysql_db" {
   subnet_ids = var.subnet_ids
 
   tags = local.common_tags
-  family = "mysql5.7"
+  family = var.family
 
   apply_immediately = true
   storage_encrypted = true
