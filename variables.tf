@@ -40,6 +40,12 @@ variable "subnet_ids" {
     description = "List of subnet IDs, requires two in different availablity zones"
 }
 
+variable "tags" {
+  type    = map(string)
+  default = {}
+  description = "Map of tags, will be added to the common tags local"
+}
+
 variable "username" {
   default = "admin"
   description = "Username of database master user"
