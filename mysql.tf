@@ -10,6 +10,7 @@ module "mysql_db" {
 
   engine         = "mysql"
   engine_version = var.mysql_version
+  major_engine_version = var.major_engine_version
 
   instance_class    = var.instance_size
   allocated_storage = var.allocated_storage

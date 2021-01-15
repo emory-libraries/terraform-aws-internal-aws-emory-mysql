@@ -29,6 +29,9 @@ variable "instance_size" {
     description = "Size of the MySQL instance"
 }
 
+variable "major_engine_version" {
+    default = "5.7"
+}
 
 variable "stack_name" {
   default = "stack"
