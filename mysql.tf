@@ -1,8 +1,9 @@
-module "db_avalon_password" {
-  source = "./modules/password"
+resource "random_string" "mysql_admin_password" {
+    length = 10
+    special = false
 }
 
-module "db_avalon" {
+module "mysql_db" {
   source  = "terraform-aws-modules/rds/aws"
 
   identifier = "${local.namespace}-mysql-db"
@@ -10,37 +11,26 @@ module "db_avalon" {
   engine         = "mysql"
   engine_version = var.mysql_version
 
-  instance_class    = "db.t3.micro"
-  allocated_storage = 20
+  instance_class    = var.instance_size
+  allocated_storage = var.allocated_storage
   
-  name     = "avalon"
-  username = var.db_avalon_username
-  password = module.db_avalon_password.result
-  port     = 5432
+  name     = "mysql-db"
+  username = var.username
+  password = random_string.mysql_admin_password.result
+  port     = var.mysql_port
 
-  option_group_name       = "default:postgres-10"
+  option_group_name       = "default:mysql-5-7"
   maintenance_window      = "Mon:00:00-Mon:03:00"
   backup_window           = "03:00-06:00"
-  backup_retention_period = 35
+  backup_retention_period = var.backup_retention_period
   copy_tags_to_snapshot   = true
 
   vpc_security_group_ids = [aws_security_group.db.id]
-  subnet_ids = data.aws_subnet_ids.selected.ids
+  subnet_ids = var.subnet_ids
 
   tags = local.common_tags
-  family = "postgres10"
+  family = "mysql5.7"
 
   apply_immediately = true
-  
-  parameters = [
-    {
-      name  = "client_encoding"
-      value = "UTF8"
-    },
-    {
-      name  = "rds.force_ssl"
-      value = 1
-    }
-  ]
   storage_encrypted = true
 }
