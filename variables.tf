@@ -29,6 +29,12 @@ variable "instance_size" {
     description = "Size of the MySQL instance"
 }
 
+
+variable "stack_name" {
+  default = "stack"
+  description = "Name of the stack, helps delinate between different projects."
+}
+
 variable "subnet_ids" {
     type = list(string)
     description = "List of subnet IDs, requires two in different availablity zones"
