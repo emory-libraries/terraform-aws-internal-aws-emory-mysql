@@ -15,7 +15,7 @@ module "mysql_db" {
   instance_class    = var.instance_size
   allocated_storage = var.allocated_storage
   
-  name     = "mysql-db"
+  name     = "mysqldb"
   username = var.username
   password = random_string.mysql_admin_password.result
   port     = var.mysql_port
