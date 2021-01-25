@@ -5,23 +5,27 @@ variable "allocated_storage" {
 
 variable "backup_retention_period" {
     default = 15
+    description = "[backup_retention_period](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#inputs:~:text=backup_retention_period)"
 }
 
 variable "family" {
     default = "mysql5.7"
+    description = "[family](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#inputs:~:text=family,-The)"
 }
 
 variable "mysql_port" {
     default = 3306
-    description = "Port which mysql will use to communicate with the ec2"
+    description = "Port which MySQL will use to communicate with the ec2"
 }
 
 variable "mysql_version" {
     default = 5.7
+    description = "MySQL version, for supported RDS MySQL versions, check [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html)"
 }
 
 variable "option_group_name" {
     default = "default:mysql-5-7"
+    description = "[option_group_name](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#inputs:~:text=option_group_name)"
 }
 
 variable "instance_size" {
@@ -31,16 +35,17 @@ variable "instance_size" {
 
 variable "major_engine_version" {
     default = "5.7"
+    description = "[major_engine_version](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#inputs:~:text=major_engine_version,-Specifies)"
 }
 
 variable "stack_name" {
   default = "stack"
-  description = "Name of the stack, helps delinate between different projects."
+  description = "Name of the stack, helps delineate between different projects."
 }
 
 variable "subnet_ids" {
     type = list(string)
-    description = "List of subnet IDs, requires two in different availablity zones"
+    description = "List of subnet IDs, requires two in different availability zones"
 }
 
 variable "tags" {
