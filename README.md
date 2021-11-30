@@ -26,5 +26,5 @@ Module to build out a mysql database in aws@emory
 |------|-------------|
 | mysql\_admin\_password | MySQL admin password, not marked as sensitive so it will show in console output |
 | mysql\_client\_security\_group\_id | Security group ID that needs to be attached to an EC2 to have access to the RDS |
-| mysql\_db\_endpoint | [this\_db\_instance\_endpoint](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#outputs:~:text=this_db_instance_endpoint) |
-| mysql\_db\_instance\_id | [this\_db\_instance\_id](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#outputs:~:text=this_db_instance_id) |
+| mysql\_db\_endpoint | [db\_instance\_endpoint](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#outputs:~:text=db_instance_endpoint) |
+| mysql\_db\_instance\_id | [db\_instance\_id](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#outputs:~:text=db_instance_id) |
