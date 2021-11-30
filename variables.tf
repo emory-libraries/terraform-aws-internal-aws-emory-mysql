@@ -24,7 +24,7 @@ variable "mysql_version" {
 }
 
 variable "option_group_name" {
-    default = "default:mysql-5-7"
+    default = "default-mysql-5-7"
     description = "[option_group_name](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/latest#inputs:~:text=option_group_name)"
 }
 
